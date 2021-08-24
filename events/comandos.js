@@ -19,7 +19,7 @@ async function msg(message, newmessage) {
         })
     }
     if (!message.content.match(new RegExp(`^(${prefix}|<@!?${client.user.id}>)\\s*.`, 'i'))) return
-    let [cmd, ...args] = message.content.match(new RegExp(`^${prefix}`, 'i')) ? message.content.slice(2).split(/ +/) : message.content.replace(new RegExp(`<@!?${client.user.id}>\\s*`)).split(/ +/)
+    let [cmd, ...args] = message.content.match(new RegExp(`^${prefix}`, 'i')) ? message.content.slice(2).split(/ +/) : message.content.replace(new RegExp(`<@!?${client.user.id}>\\s*`), '').split(/ +/)
     cmd = cmd.toLowerCase()
     const command = client.commands.get(cmd) || client.commands.find((command) => command.aliases && command.aliases.includes(cmd))
     if (!command) {
@@ -28,7 +28,7 @@ async function msg(message, newmessage) {
     }
     if (command.dev && !client.owners.includes(message.author.id)) return
 
-        command.execute(client, message, args, Discord, send).catch((err) => {
+    command.execute(client, message, args, Discord, send).catch((err) => {
         send('Hubo un error al ejecutar el comando. Intenta más tarde. ' + err.message)
         client.error(err)
     })
