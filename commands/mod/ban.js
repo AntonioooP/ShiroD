@@ -4,16 +4,16 @@ module.exports = {
         const embed = new Discord.MessageEmbed()
         embed.setAuthor(message.author.tag, message.author.displayAvatarURL({ dynamic: true }));
         embed.setTimestamp()
-        if (!message.member.hasPermission("BAN_MEMBERS")) {
+        if (!message.member.permissions.has("BAN_MEMBERS")) {
             embed.setColor('RED')
             embed.setDescription('<:norojo:785955359692161074> No tienes permisos suficientes para ejecutar este comando.')
-            return message.channel.send(embed)
+            return send(embed)
         }
         const m = message.mentions.users.first() || client.users.cache.get(args[0])
         if (!m) {
             embed.setColor('RED')
             embed.setDescription('<:norojo:785955359692161074> Debes mencionar a un usuario \nUso:\n`ban <miembro>`')
-            return message.channel.send(embed)
+            return send(embed)
         }
         try {
             message.guild.members.ban(m)

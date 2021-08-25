@@ -51,7 +51,7 @@ module.exports = {
         try {
             embed.setColor('RED')
             embed.setDescription('Has sido advertido, Motivo: ' + motivo)
-            await miembro.send(embed)
+            await miembro.send({embeds: [embed]})
         } catch (err) { /* nada jaja */ }
 
         let embed2 = new Discord.MessageEmbed()
@@ -59,10 +59,9 @@ module.exports = {
         embed2.setTimestamp()
         embed2.setColor('GREEN')
         const warn = await db.findOne({ usuario: miembro.id })
-        // if (warn) embed2.setDescription(`<@${miembro.id}> ha sido warneado.\nMotivo: ${motivo}\n\nWarns totales: ${warn.motivo.length}`)
         embed2.setDescription(`<@${miembro.id}> ha sido warneado.\nMotivo: ${motivo} ${warn ? '\n\nWarns totales: ' + warn.motivo.length : ''}`)
         send(embed2)
-        client.channels.cache.get('839665670425018388').send(embed2)
+        client.channels.cache.get('839665670425018388').send({embeds: [embed2]})
 
     }
 }

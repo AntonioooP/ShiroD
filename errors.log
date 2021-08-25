@@ -3,3 +3,13 @@ Client Error: Error: ReferenceError: a is not defined
     at process.emit (node:events:394:28)
     at process._fatalException (node:internal/process/execution:170:25)
 
+Client Error: Error: TypeError: message.member.hasPermission is not a function
+    at module.exports.error (C:\Users\ANTONIO\Desktop\ShiroD\util\client.js:26:19)
+    at C:\Users\ANTONIO\Desktop\ShiroD\events\comandos.js:33:16
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+
+Client Error: Error: ban DiscordAPIError: Cannot send an empty message
+    at module.exports.error (C:\Users\ANTONIO\Desktop\ShiroD\util\client.js:26:19)
+    at C:\Users\ANTONIO\Desktop\ShiroD\events\comandos.js:33:16
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+

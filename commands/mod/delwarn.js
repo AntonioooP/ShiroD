@@ -8,7 +8,7 @@ module.exports = {
         embed.setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
         embed.setTimestamp()
 
-        if (!message.member.hasPermission('KICK_MEMBERS')) {
+        if (!message.member.permissions.has('KICK_MEMBERS')) {
             embed.setDescription('<:norojo:785955359692161074> Sin permisos.\nNo tienes los permisos suficientes para usar este comando.')
             embed.setColor('RED')
             return send(embed)

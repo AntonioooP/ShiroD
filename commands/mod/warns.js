@@ -20,7 +20,7 @@ module.exports = {
         db.findOne({ usuario: user.user.id }, async (err, data) => {
             if (err) throw err;
             if (data?.motivo?.length) {
-                let desc = data.motivo.map((a, i) => `**${i + 1}** | **Staff:** <@${a.mod}>\n**Motivo:** ${a.motivo}\n**Fecha:** ${a.fecha}\n`)
+                let desc = String(data.motivo.map((a, i) => `**${i + 1}** | **Staff:** <@${a.mod}>\n**Motivo:** ${a.motivo}\n**Fecha:** ${a.fecha}\n`))
                 embed.setColor('BLUE')
                 embed.setDescription(desc)
                 embed.setFooter('Warns totales: ' + data.motivo.length)

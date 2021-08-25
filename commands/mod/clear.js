@@ -7,7 +7,7 @@ module.exports = {
         let embed = new Discord.MessageEmbed()
         embed.setAuthor(message.author.username, message.author.displayAvatarURL({ dynamic: true }))
         embed.setTimestamp()
-        if (!message.member.hasPermission("BAN_MEMBERS")) {
+        if (!message.member.permissions.has("BAN_MEMBERS")) {
             embed.setDescription('<:norojo:785955359692161074> Sin permisos.\nNo tienes los permisos suficientes para usar este comando.')
             embed.setColor('RED')
             return send(embed)

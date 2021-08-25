@@ -30,6 +30,6 @@ async function msg(message, newmessage) {
 
     command.execute(client, message, args, Discord, send).catch((err) => {
         send('Hubo un error al ejecutar el comando. Intenta más tarde. ' + err.message)
-        client.error(err)
+        client.error(command.name + ' ' + err)
     })
 }

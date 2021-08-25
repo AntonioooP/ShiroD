@@ -2,7 +2,7 @@ module.exports = {
     name: 'booster',
     aliases: ['rol'],
     async execute(client, message, args, Discord, send) {
-        if (!message.member.hasPermission('MANAGE_ROLES')) return send('No tienes permisos suficientes')
+        if (!message.member.permissions.has('MANAGE_ROLES')) return send('No tienes permisos suficientes')
 
         const split = args
             .join(' ')
@@ -14,14 +14,12 @@ module.exports = {
         if (!m) return send('Debes mencionar a alguien para poder crearle el rol booster')
         message.guild.roles
             .create({
-                data: {
-                    name: split[0],
-                    color: split[1],
-                    permissions: 104189761,
-                    mentionable: false,
-                    position: 138,
-                    hoist: true
-                },
+                name: split[0],
+                color: split[1],
+                permissions: 104189761n,
+                mentionable: false,
+                position: 138,
+                hoist: true,
                 reason: `Booster rol para ${m.tag}`
             })
             .then((role) => {
